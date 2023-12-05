@@ -3,14 +3,14 @@ import { promisify } from 'util';
 
 class RedisClient {
   // Constructor that creates a client to Redis
-  constructor () {
+  constructor() {
     this.client = createClient();
     // Display any error in the console
-    this.client.on('error', err => console.log('Redis Client Error', err));
+    this.client.on('error', (err) => console.log('Redis Client Error', err));
   }
 
   // Function that checks the status of the connection to Redis
-  isAlive () {
+  isAlive() {
     // If the connection to Redis is a success
     if (this.client.connected) {
       return true;
@@ -21,7 +21,7 @@ class RedisClient {
 
   // Asynchronous function that takes a string key as argument
   // and returns the Redis value stored for this key
-  async get (key) {
+  async get(key) {
     // Call the `get` method of Redis and binds it to the Redis client object
     const binder = promisify(this.client.get).bind(this.client);
     // Then get the corresponding value for the given key
@@ -34,7 +34,7 @@ class RedisClient {
   // Asynchronous function that takes a string key,
   // a value and a duration in second as arguments to store it in Redis
   // (with an expiration set by the duration argument)
-  async set (key, value, duration) {
+  async set(key, value, duration) {
     // Call the `set` method of Redis and binds it to the Redis client object
     const binder = promisify(this.client.set).bind(this.client);
     // Store the key/value pair in Redis
@@ -45,7 +45,7 @@ class RedisClient {
 
   // Asynchronous function that takes a string key as argument
   // and remove the value in Redis for this key
-  async del (key) {
+  async del(key) {
     // Call the `del` method of Redis and binds it to the Redis client object
     const binder = promisify(this.client.del).bind(this.client);
     // Delete the given key to the Redis server
