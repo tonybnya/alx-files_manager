@@ -16,7 +16,7 @@ class AppController {
     // Get the number of files in the DB
     const files = await dbClient.nbFiles();
     // Return with a status code 200
-    response.status(200).json({ users: users, files: files });
+    response.status(200).json({ users, files });
   }
 }
 
