@@ -10,13 +10,19 @@ const PORT = process.env.DB_PORT || 27017;
 // or default: files_manager
 const DATABASE = process.env.DB_DATABASE || 'files_manager';
 
+// Set the MongoDB connection URL
+const url = `mongodb://${HOST}:${PORT}`;
+
 class DBClient {
   // Constructor that creates a client to MongoDB
-  Constructor() {
+  constructor() {
+    // Create an instance of a MongoDB client
     this.client = new MongoClient(
       url,
       { useUnifiedTopology: true, useNewUrlParser: true }
     );
+
+    // Connect to MongoDB and set the database
     this.client.connect().then(() => {
       this.db = this.client.db(`${DATABASE}`);
     }).catch((err) => {
