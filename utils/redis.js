@@ -12,11 +12,11 @@ class RedisClient {
   // Function that checks the status of the connection to Redis
   isAlive() {
     // If the connection to Redis is a success
-    if (this.client.connected) {
-      return true;
-    }
-    // Otherwise
-    return false;
+    // if (this.client.connected) {
+    //   return true;
+    // }
+    // // Otherwise
+    return this.client.connected;
   }
 
   // Asynchronous function that takes a string key as argument
