@@ -19,7 +19,7 @@ class DBClient {
     // Create an instance of a MongoDB client
     this.client = new MongoClient(
       url,
-      { useUnifiedTopology: true, useNewUrlParser: true }
+      { useUnifiedTopology: true, useNewUrlParser: true },
     );
 
     // Connect to MongoDB and set the database
