@@ -12,11 +12,11 @@ class AppController {
   // Endpoint definition: GET /stats
   static async getStats(request, response) {
     // Get the number of users in the DB
-    const users = await dbClient.nbUsers();
+    const numUsers = await dbClient.nbUsers();
     // Get the number of files in the DB
-    const files = await dbClient.nbFiles();
+    const numFiles = await dbClient.nbFiles();
     // Return with a status code 200
-    response.status(200).json({ users, files });
+    response.status(200).json({ users: numUsers, files: numFiles });
   }
 }
 
